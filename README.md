@@ -54,7 +54,9 @@ dz官方那个神秘，把dis的所有print都直接pass，用毛啊
 
 将version字段(如patch_android_202609021825_4250747)提取出来，进行URL拼接
 
-http://u5.gph.netease.com/{version}/assets.ppk.map
+`http://u5.gph.netease.com/{version}/assets.ppk.map`
+
+如`http://u5.gph.netease.com/patch_android_202609021825_4250747/assets.ppk.map`
 
 即可获取到map文件，map文件是一种pbin格式，或者说file_list文件都是这种
 
