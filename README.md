@@ -28,7 +28,7 @@ import opcode; a = open('opmap.txt','r'); a.write(str(opcode.opmap)); a.close()
 
 ### redirect
 
-从python中有个叫C_file的模块，可以直接访问NeoX的VFS，通过C_file.get_file('redirect.nxs','')就可以获得redirect的marshal string
+从python中有个叫C_file的模块，可以直接访问NeoX的VFS，通过`C_file.get_file('redirect.nxs','')`就可以获得redirect的marshal string
 
 然后从之前提取的opmap.txt可以发现，有一堆OPEXT_开头的字节码，这一看就不是python的
 
