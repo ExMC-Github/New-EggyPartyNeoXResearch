@@ -16,7 +16,7 @@
 
 就比如说这个 [nxconsole](https://github.com/ExMC-Github/New-EggyPartyNeoXResearch/blob/main/nxconsole.cpp)
 
-可以优先使用bin文件夹的cmdtxt1.py，然后打开code.interact直接拿到真实python环境
+可以优先使用bin文件夹的cmdtxt1.py，然后打开并且注入直接拿到真实python环境
 
 先通过python命令将opcode.opmap导出为txt
 
