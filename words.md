@@ -1,3 +1,5 @@
+## 解释
+
 需要逆向的游戏为u5（蛋仔派对）
 
 该游戏opcodes含有非标准opcode，且magic number是标准的magic + 1（数字，如62212）
@@ -6,6 +8,7 @@
 
 游戏的脚本包是script.npk，在官方电脑版本（发烧）版本采用了AES-256-ECB（v2）+rotor加密，但是是魔改的AES
 
+## 代码相关
 发烧版本的script.npk需要先提取redirect.nxs并还原字节码（记得拆解CISC字节码成标准）然后uncompyle6
 
 然后，可以在NpkImporter这个class中看到有关C_file的引用，在发烧版本，是直接将文件名的哈希作为salt
@@ -20,4 +23,23 @@ rotor的话随便解了，Github上其他的大佬是做了有关阴阳师的研
 
 然后拿到了之后，跳过4字节文件头然后读取就好了，虽然说如果可以动态调试（如注入获取游戏客户端python执行权限，但是发烧版给python的PyRun_SimpleString整个搞成空气了，反正我看IDA的时候没看到，需要自己那5个函数的RVA手动拼一个，或者看看`patch_finder.py`），则可以通过项目`README.md`中提到的方法
 
-(Not complete)
+### 注入（发烧版本）
+
+通过安装python后，打开项目内`patch_finder.py`，需带命令行参数（游戏的bin\client.exe文件），然后执行
+
+也可以带-oc参数（output c），这会生成一个DLL文件，可以直接编译后注入，然后即可在游戏通过AllocConsole开启的控制台中输入python命令（不好用但能用）
+
+#### 某些注入问题
+
+在我以前搞蛋仔编辑器杂交成蛋仔派对的时候，注入的时候就有一些玄学问题
+
+比如必须在`VersionState`之后才注入，不然程序会整个崩端，不知道现在还有没有这个问题，可以提issue说一下
+
+## 资源获取
+**!!! 前提 !!!**: 需要先有能力解析file_list和map文件，map文件也是跟file_list用的一个算法
+
+可以通过C_file进行获取文件，通过使用get_res_file函数，如果是代码的话就需要用get_file，如C_file.get_file("redirect.nxs",'')就可以获得redirect模块的pyc数据（其他的模块不行，需要解密，但是有了redirect就是导入期，不过这不应在这个章节中）
+
+或者，还有一种*更高级且神经的办法*，那就是**在线获取文件**
+
+你连游戏都不用下，就可以获取到文件，我将在`words_1.md`（可能没写）讲述这些
