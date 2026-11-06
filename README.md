@@ -139,6 +139,6 @@ a.close()
 
 用C_file模块的get_res_file函数，这是调用方式:
 
-`C_file.get_res_file('gui2/background/bg_login.png')`
+`C_file.get_res_file('gui2/background/bg_login.png','')`
 
 类似这种的获取方式，如果说failed的话，那么把png换成kta再试试就好了
