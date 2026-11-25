@@ -46,7 +46,7 @@ npk获取文件，需要gph链接，通常是
 
 http://u5.gph.netease.com/npkext_android_202611041827_4430397/ext_packer_sound_1.npk
 
-然后呢，也key下载file_list，如
+然后呢，也可以下载file_list，如
 
 http://u5.gph.netease.com/npkext_android_202611041827_4430397/ext_packer_sound_1_file_list
 
